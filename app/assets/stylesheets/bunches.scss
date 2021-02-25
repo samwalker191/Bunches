@@ -1,0 +1,83 @@
+// Place all the styles related to the bunches controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  background-image: url("https://media.tenor.com/images/5d4791abbfa98823cdbcd82b7ece2ced/tenor.gif");
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  background-color: yellow;
+  box-shadow: 12px 12px 2px 1px black;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  padding: 10px;
+}
+
+.bunches-container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 80vw;
+
+}
+
+.bunches {
+  position: relative;
+  background: #ffdf007f;
+  backdrop-filter: blur(8px);
+  box-shadow: 12px 12px 2px 1px black;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  height: 300px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.bunches:hover {
+  cursor: pointer;
+}
+
+.bunches button {
+  position: absolute;
+  left: 66px;
+  top: 10px;
+  z-index: 10;
+  background: black;
+  color: white;
+  padding: 5px;
+  display: none;
+}
+
+.bunches button:hover {
+  cursor: pointer;
+}
+
+.bunches:hover button {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+.slide1 {
+    animation: linear slide1 0.5s infinite;
+}
+
+@keyframes slide1 {
+    0% {
+        transform: rotate(0deg) scale(1,1);
+    }
+
+    50% {
+      transform: rotate(180deg) scale(2,2)
+    }
+
+    100% {
+        transform: rotate(360deg) scale(1, 1);
+    }
+}
