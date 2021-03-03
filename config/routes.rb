@@ -5,4 +5,5 @@ Rails.application.routes.draw do
     resources :bunches, only: [:index, :create]
   end
   resources :bunches, except: [:new, :edit, :index, :create]
+  resource :session, only: [:new, :create, :destroy]
 end

@@ -1,4 +1,6 @@
 class BunchesController < ApplicationController
+  before_action :require_logged_in, only: [:create, :update, :destroy, :edit]
+
   def index
     @seller = User.find_by(id: params[:user_id])
     @bunches = @seller.bunches_to_sell

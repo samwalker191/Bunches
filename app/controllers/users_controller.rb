@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :require_logged_out, only: [:new, :create]
+
   def index
     # GET /users
     # gives all things of this resource
@@ -22,6 +24,10 @@ class UsersController < ApplicationController
       render json: "User not found", status: 404
     end
 
+  end
+
+  def new
+    render :new
   end
 
   def create
