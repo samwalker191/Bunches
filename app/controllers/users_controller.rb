@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       users = User.all
     end
 
-    render json: users
+    render :index
   end
 
   def show
@@ -35,9 +35,11 @@ class UsersController < ApplicationController
     user = User.new(user_params) # { username: 'waht', ripe: 'wat' }
 
     if user.save
-      render json: user
+      login(user)
+      render :index
     else
-      render json: user.errors.full_messages, status: 422
+      flash.now[:errors] = user.errors.full_messages
+      render :new
     end
   end
 
@@ -71,6 +73,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :ripeness_preference)
+    params.require(:user).permit(:username, :ripeness_preference, :password)
   end
 end

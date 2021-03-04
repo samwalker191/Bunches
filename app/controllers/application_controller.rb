@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   # CRLLL
 
+  helper_method :logged_in?, :current_user
+
   # C
   def current_user
     # finds a user by the session_token
