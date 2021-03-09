@@ -12,10 +12,14 @@ class BunchesController < ApplicationController
     bunche = Bunche.find_by(id: params[:id])
 
     if bunche
-      render json: bunche
+      render :show
     else
       render json: "Bunche not found", status: 404
     end
+  end
+
+  def new
+
   end
 
   def create
@@ -29,17 +33,23 @@ class BunchesController < ApplicationController
     end
   end
 
-  def update
-    bunche = Bunche.find_by(id: params[:id])
+  def edit
+    @bunche = Bunche.find_by(id: params[:id])
+    render :edit
+  end
 
-    if bunche
-      if bunche.update(bunche_params)
-        render json: bunche
+  def update
+    @bunche = current_user.bunches_to_sell.find_by(id: params[:id])
+
+    if @bunche
+      if @bunche.update(bunche_params)
+        render json: @bunche
       else
-        render json: bunche.errors.full_messages, status: 422
+        render json: @bunche.errors.full_messages, status: 422
       end
     else
-      render json: "Bunche not found", status: 404
+      flash[:errors] = ["Bunche not found"]
+      render :something
     end
   end
 
@@ -50,7 +60,8 @@ class BunchesController < ApplicationController
       bunche.destroy
       render json: bunche
     else
-      render json: "Bunche not found", status: 404
+      flash[:errors] = ["Bunche not found"]
+      redirect_to somewhere
     end
   end
 

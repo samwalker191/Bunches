@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :users do 
     resources :bunches, only: [:index, :create]
   end
-  resources :bunches, except: [:new, :edit, :index, :create]
+
+  resources :bunches, except: [:new, :index]
   resource :session, only: [:new, :create, :destroy]
+
+  get '*unmatched_route', to: 'application#raise_not_found'
 end

@@ -39,4 +39,8 @@ class ApplicationController < ActionController::Base
     !!current_user
     # !current_user.nil?
   end
+
+  def raise_not_found
+    render 'not_found/index'
+  end
 end
