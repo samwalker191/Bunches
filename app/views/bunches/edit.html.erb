@@ -1,0 +1,38 @@
+<h1>Edit the bunch</h1>
+
+<form action="<%= bunch_url(@bunche) %>" method="POST">
+  <input type="hidden" name="_method" value="PATCH">
+  <input type="hidden" name='authenticity_token' value="<%= form_authenticity_token %>">
+
+  <label>Cost:
+    <input type="text" name="bunche[cost]" value="<%= @bunche.cost %>">
+  </label>
+
+  <label>Quantity:
+    <label>1:
+      <input type="radio" name="bunche[quantity]" value="1" <%= @bunche.quantity == 1 ? 'checked' : '' %>>
+    </label>
+
+    <label>2:
+      <input type="radio" name="bunche[quantity]" value="2" <%= @bunche.quantity == 2 ? 'checked' : '' %>>
+    </label>
+
+    <label>3:
+      <input type="radio" name="bunche[quantity]" value="3" <%= @bunche.quantity == 3 ? 'checked' : '' %>>
+    </label>
+
+    <label>4:
+      <input type="radio" name="bunche[quantity]" value="4" <%= @bunche.quantity == 4 ? 'checked' : '' %>>
+    </label>
+
+    <label>5:
+      <input type="radio" name="bunche[quantity]" value="5" <%= @bunche.quantity == 5 ? 'checked' : '' %>>
+    </label>
+  </label>
+  
+  <label>Ripeness:
+    <textarea name="bunche[ripeness]"><%= @bunche.ripeness %></textarea>
+  </label>
+
+  <input type="submit" value="Edit the Bunche">
+</form>
